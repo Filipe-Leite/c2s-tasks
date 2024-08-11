@@ -45,3 +45,8 @@ group :development do
   # gem "spring"
 end
 
+gem 'mysql2', '>= 0.5.3'
+gem 'jwt'
+gem 'nokogiri'
+gem "bcrypt", "~> 3.1.7"
+gem 'rack-cors'
