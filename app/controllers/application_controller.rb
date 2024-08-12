@@ -6,7 +6,8 @@ class ApplicationController < ActionController::API
     token = request.headers['Authorization']&.split(' ')&.last
 
     if token && validate_token(token)
-      true
+
+      return @current_user
     else
       render json: { error: 'Unauthorized' }, status: :unauthorized
     end
@@ -19,9 +20,8 @@ class ApplicationController < ActionController::API
     response = Faraday.get('http://127.0.0.1:3000/validate_token', {}, { 'Authorization' => "Bearer #{token}" })
     
     if response.status == 200
-      # Se o token for válido, decodifique o payload
-      @current_user = JSON.parse(response.body)["user"]
-      true
+            p "user validated >>>>>>>> #{token}"
+      return @current_user = JSON.parse(response.body).transform_keys(&:to_sym)
     else
       false
     end
