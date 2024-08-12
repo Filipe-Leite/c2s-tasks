@@ -10,5 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_08_213105) do
+  create_table "task_statuses", charset: "utf8mb3", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "task_status_id", null: false
+    t.string "url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_status_id"], name: "index_tasks_on_task_status_id"
+  end
+
+  add_foreign_key "tasks", "task_statuses"
 end

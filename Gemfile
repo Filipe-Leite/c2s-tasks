@@ -50,3 +50,4 @@ gem 'jwt'
 gem 'nokogiri'
 gem "bcrypt", "~> 3.1.7"
 gem 'rack-cors'
+gem 'faraday'
