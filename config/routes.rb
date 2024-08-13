@@ -1,4 +1,8 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  
+  mount Sidekiq::Web => '/sidekiq'
 
   get '/tasks', to: 'tasks#index'
   post '/create_task', to: 'tasks#create'

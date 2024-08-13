@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
     response = Faraday.get('http://127.0.0.1:3000/validate_token', {}, { 'Authorization' => "Bearer #{token}" })
     
     if response.status == 200
-            p "user validated >>>>>>>> #{token}"
+      
       return @current_user = JSON.parse(response.body).transform_keys(&:to_sym)
     else
       false

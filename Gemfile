@@ -52,3 +52,4 @@ gem "bcrypt", "~> 3.1.7"
 gem 'rack-cors'
 gem 'faraday'
 gem 'redis'
+gem 'sidekiq'

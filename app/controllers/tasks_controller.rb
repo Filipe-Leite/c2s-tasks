@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    
+
     merged_task_params = task_params.merge(task_status_id: 1)
 
     task = Task.new(merged_task_params)
@@ -24,11 +24,12 @@ class TasksController < ApplicationController
     new_task_status_description = TaskStatus.find(params[:task_status_id])[:description]
     
     if @task.update(task_params)
+      NotificationWorker.perform_async(params[:id])
 
       NotificationsMicroservice.create_notification(@current_user[:id], 
                                                     @current_user[:email], 
                                                     @task,
-                                                    new_task_status_description)
+                                                    new_task_status_description)           
 
       render json: @task
     else

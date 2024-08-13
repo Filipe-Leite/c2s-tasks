@@ -14,7 +14,7 @@ module NotificationsMicroservice
   private
 
   def self.write_description(user_email, task_id, new_task_status_description)
-    return "#{user_email} changed the task status #{task_id} to #{new_task_status_description}"
+    return "#{user_email} changed the task #{task_id} to #{new_task_status_description} status"
   end
 
 end
