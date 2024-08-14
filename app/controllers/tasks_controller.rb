@@ -24,6 +24,7 @@ class TasksController < ApplicationController
     new_task_status_description = TaskStatus.find(params[:task_status_id])[:description]
     
     if @task.update(task_params)
+      
       NotificationWorker.perform_async(params[:id])
 
       NotificationsMicroservice.create_notification(@current_user[:id], 
@@ -33,6 +34,12 @@ class TasksController < ApplicationController
 
       render json: @task
     else
+
+      p "@task.errors >>>> #{@task.errors.full_messages}"
+      p "@task.errors >>>> #{@task.errors.full_messages}"
+      p "@task.errors >>>> #{@task.errors.full_messages}"
+      p "@task.errors >>>> #{@task.errors.full_messages}"
+
       render json: @task.errors, status: :unprocessable_entity
     end
   end
