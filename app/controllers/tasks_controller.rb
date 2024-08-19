@@ -35,11 +35,6 @@ class TasksController < ApplicationController
       render json: @task
     else
 
-      p "@task.errors >>>> #{@task.errors.full_messages}"
-      p "@task.errors >>>> #{@task.errors.full_messages}"
-      p "@task.errors >>>> #{@task.errors.full_messages}"
-      p "@task.errors >>>> #{@task.errors.full_messages}"
-
       render json: @task.errors, status: :unprocessable_entity
     end
   end

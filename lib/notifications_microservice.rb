@@ -9,6 +9,7 @@ module NotificationsMicroservice
                                                                     task_id:task_obj[:id],
                                                                     user_id: user_id})
 
+    
   end
 
   private
