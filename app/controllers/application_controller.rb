@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
 
   def validate_token(token)
 
-    response = Faraday.get('http://127.0.0.1:3000/validate_token', {}, { 'Authorization' => "Bearer #{token}" })
+    response = Faraday.get('http://127.0.0.1:3000/auth/validate_token', {}, { 'Authorization' => "Bearer #{token}" })
     
     if response.status == 200
       

@@ -1,6 +1,6 @@
-namespace :db do
+namespace :dev do
   desc "Populate user types and tasks status"
-  task populate: :environment do
+  task setup: :environment do
 
     puts "Started to populate tables..."
 

@@ -27,10 +27,13 @@ class TasksController < ApplicationController
       
       NotificationWorker.perform_async(params[:id])
 
+      p "paramsa aef >>> #{params[:task_status_id]}"
+
       NotificationsMicroservice.create_notification(@current_user[:id], 
                                                     @current_user[:email], 
                                                     @task,
-                                                    new_task_status_description)           
+                                                    new_task_status_description,
+                                                    params[:task_status_id])           
 
       render json: @task
     else
